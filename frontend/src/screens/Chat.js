@@ -107,6 +107,7 @@ export default function ChatRoom() {
     para.classList.add("text");
 
     if (message && message.text) {
+      //eslint-disable-next-line
       const urlRegex =
         /(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
       const textWithLinks = message.text.replace(urlRegex, (url) => {
