@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Qs from "qs";
 import socket from "../services/socket";
 
@@ -11,6 +12,7 @@ let code;
 export default function ChatRoom() {
   const chatFormRef = useRef(null);
   const chatMessagesRef = useRef(null);
+  const navigate = useNavigate();
 
   const [roomName, setRoomName] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
@@ -76,7 +78,8 @@ export default function ChatRoom() {
   };
 
   const handleRedirect = () => {
-    window.location.href = "/?adminLeft=true";
+    navigate("/?adminLeft=true");
+    // window.location.href = "/?adminLeft=true";
   };
 
   const handleSubmit = (e) => {
@@ -169,7 +172,8 @@ export default function ChatRoom() {
   };
 
   const handleLeave = () => {
-    window.location = "/";
+    navigate("/");
+    // window.location = "/";
     if (isAdmin) {
       console.log("admin clicked");
       socket.emit("endroom");

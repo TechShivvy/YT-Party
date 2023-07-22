@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 // require("dotenv").config();
 
 export default function Join() {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [roomError, setRoomError] = useState(false);
-
+  const navigate = useNavigate;
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const usernameParam = urlParams.get("username");
@@ -33,7 +34,8 @@ export default function Join() {
         .then((data) => {
           setRoomError(!data.available);
           if (data.available)
-            window.location.href = `/chat?username=${username}&room=${room}`;
+            navigate(`/chat?username=${username}&room=${room}`);
+          // window.location.href = `/chat?username=${username}&room=${room}`;
         })
         .catch((error) => {
           setRoomError(false);
