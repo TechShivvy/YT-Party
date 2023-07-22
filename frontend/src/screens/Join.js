@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-require("dotenv").config();
+// require("dotenv").config();
 
 export default function Join() {
   const [username, setUsername] = useState("");
@@ -15,8 +15,8 @@ export default function Join() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (room.trim() !== "") {
-      // const serverUrl = "https://yt-party-server.onrender.com";
-      const serverUrl = process.env.SERVER_URL || "http://localhost:8080";
+      const serverUrl = "https://yt-party-server.onrender.com";
+      // const serverUrl = process.env.SERVER_URL || "http://localhost:8080";
       fetch(`${serverUrl}/check-room`, {
         method: "POST",
         headers: {
