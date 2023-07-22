@@ -41,7 +41,7 @@ export default function ChatRoom() {
       socket.off("roomUsers", handleRoomUsers);
       socket.off("message", handleNewMessage);
     };
-  }, []);
+  });
 
   const handleRoomUsers = ({ room, users }) => {
     console.log("handleRoomUsers: " + isAdmin);
