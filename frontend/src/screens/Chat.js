@@ -41,7 +41,7 @@ export default function ChatRoom() {
       socket.off("roomUsers", handleRoomUsers);
       socket.off("message", handleNewMessage);
     };
-  });
+  }, []);
 
   const handleRoomUsers = ({ room, users }) => {
     console.log("handleRoomUsers: " + isAdmin);
@@ -108,7 +108,8 @@ export default function ChatRoom() {
 
     if (message && message.text) {
       //eslint-disable-next-line
-      const urlRegex =/(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
+      const urlRegex =
+        /(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
       const textWithLinks = message.text.replace(urlRegex, (url) => {
         return `<a href="${url}" class="link" target="_blank" data-url="${url}">${url}</a>`;
       });
