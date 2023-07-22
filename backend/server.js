@@ -16,7 +16,7 @@ console.log(users);
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server, { cors: { origin: process.env.SERVER_URL } });
+const io = socketio(server, { cors: { origin: "*" } });
 
 app.use(cors());
 app.use(express.json());
