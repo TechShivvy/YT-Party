@@ -9,8 +9,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/home" element={<Home />} /> */}
         <Route path="/join" element={<Join />} />
         <Route path="/chat" element={<ChatRoom />} />
       </Routes>
