@@ -2,6 +2,7 @@ const cors = require("cors");
 const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
+require("dotenv").config();
 const formatMessage = require("./utils/messages");
 const {
   users,
