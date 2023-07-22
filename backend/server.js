@@ -123,5 +123,6 @@ io.on("connection", (socket) => {
 });
 
 const PORT = process.env.PORT || 8080;
+const HOST = process.env.SERVER_URL || "http://localhost";
 
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+server.listen(PORT, HOST, () => console.log(`Server running on port ${PORT}`));
