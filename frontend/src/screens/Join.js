@@ -6,7 +6,7 @@ export default function Join() {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [roomError, setRoomError] = useState(false);
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const usernameParam = urlParams.get("username");
