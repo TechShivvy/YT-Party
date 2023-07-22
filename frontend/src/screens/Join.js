@@ -33,9 +33,10 @@ export default function Join() {
         })
         .then((data) => {
           setRoomError(!data.available);
-          if (data.available)
+          if (data.available) {
             navigate(`/chat?username=${username}&room=${room}`);
-          // window.location.href = `/chat?username=${username}&room=${room}`;
+            // window.location.href = `/chat?username=${username}&room=${room}`;
+          }
         })
         .catch((error) => {
           setRoomError(false);
