@@ -31,7 +31,7 @@ export default function Video(props) {
         state: event.target.getPlayerState(),
       });
     }
-  }, [playPauseCounter]);
+  }, [playPauseCounter, event]);
 
   useEffect(() => {
     if (event) {
@@ -43,7 +43,7 @@ export default function Video(props) {
         timestamp: event.target.getCurrentTime(),
       });
     }
-  }, [syncCounter]);
+  }, [syncCounter, event]);
 
   useEffect(() => {
     const messageHandler = (message) => {
