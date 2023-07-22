@@ -1,4 +1,5 @@
 const cors = require("cors");
+// const path = require("path");
 const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
@@ -20,6 +21,10 @@ const io = socketio(server, { cors: { origin: "*" } });
 
 app.use(cors());
 app.use(express.json());
+
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
 
 app.post("/check-room", (req, res) => {
   const { room } = req.body;

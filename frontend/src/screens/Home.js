@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 export default function Home() {
   const [username, setUsername] = useState("");
-
+  const navigate = useNavigate();
   const checkRedirect = () => {
     const getQueryParam = (name) => {
       const queryString = window.location.search;
@@ -14,7 +15,8 @@ export default function Home() {
     const adminLeft = getQueryParam("adminLeft");
     if (adminLeft === "true") {
       alert("Admin has left the room");
-      window.location.href = "/";
+      // window.location.href = "/";
+      navigate("/");
     }
   };
   window.onload = checkRedirect;
@@ -24,9 +26,11 @@ export default function Home() {
     const isCreateRoom = clickedButtonId === "create-room-btn";
     const path = isCreateRoom ? "/chat" : "/join";
     const roomCode = isCreateRoom ? uuidv4() : "";
-    window.location.href = `${path}?${
+    const url = `${path}?${
       isCreateRoom ? `room=${roomCode}&` : ""
     }username=${username}`;
+    navigate(url);
+    // window.location.href = url
 
     if (isCreateRoom) {
       alert("Do not refresh the page, else your queue will get cleared!");
