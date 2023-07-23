@@ -8,7 +8,7 @@ import Video from "../components/Video";
 
 import { writeText } from "clipboard-polyfill";
 
-let code;
+let code,roomId;
 export default function ChatRoom() {
   const chatFormRef = useRef(null);
   const chatMessagesRef = useRef(null);
@@ -49,10 +49,11 @@ export default function ChatRoom() {
 
   const handleRoomUsers = ({ room, users }) => {
     console.log("handleRoomUsers: " + isAdmin);
-    if (code && room === roomName) {
+    if (code && room === roomId) {
       console.log("handleJOIN: " + code);
       socket.emit("videoCode", code);
     }
+    roomId=room;
     setRoomName(room);
     console.log(users);
     // console.log(socket.id);
@@ -185,7 +186,7 @@ export default function ChatRoom() {
   const [tooltipVisible, setTooltipVisible] = useState(false);
 
   const handleCopyClick = () => {
-    writeText(roomName)
+    writeText(roomId)
       .then(() => {
         console.log("Text copied to clipboard.");
         setTooltipVisible(true);
