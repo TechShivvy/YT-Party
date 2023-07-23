@@ -27,7 +27,8 @@ export default function ChatRoom() {
     });
 
     let prevSocketId;
-    prevSocketId = sessionStorage.getItem("socketId");
+    // prevSocketId = sessionStorage.getItem("socketId");
+    prevSocketId = localStorage.getItem("socketId");
     socket.emit("joinRoom", { username, room, prevSocketId });
     socket.on("roomUsers", handleRoomUsers);
     socket.on("videoCode", handleVideoCode);
@@ -36,7 +37,8 @@ export default function ChatRoom() {
     socket.on("connect", () => {
       // console.log("socketid: " + socket.id);
       // console.log("prevSocketId: " + prevSocketId);
-      sessionStorage.setItem("socketId", socket.id);
+      // sessionStorage.setItem("socketId", socket.id);
+      localStorage.setItem("socketId", socket.id);
     });
 
     return () => {
@@ -47,7 +49,7 @@ export default function ChatRoom() {
 
   const handleRoomUsers = ({ room, users }) => {
     console.log("handleRoomUsers: " + isAdmin);
-    if (code) {
+    if (code && room == roomName) {
       console.log("handleJOIN: " + code);
       socket.emit("videoCode", code);
     }
