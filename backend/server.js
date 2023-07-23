@@ -106,7 +106,7 @@ io.on("connection", (socket) => {
     console.log(users);
 
     if (user) {
-      localStorage.removeItem("socketId");
+      // localStorage.removeItem("socketId");
       io.to(user.room).emit(
         "message",
         formatMessage(botName, `<i>${user.username} has left the chat</i>`)

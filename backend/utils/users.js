@@ -41,7 +41,7 @@ function endRoom(id) {
 
   if (index != -1) {
     if (users[index].isAdmin) {
-      localStorage.removeItem("socketId");
+      // localStorage.removeItem("socketId");
       return users.splice(index, 1)[0];
     }
   }
