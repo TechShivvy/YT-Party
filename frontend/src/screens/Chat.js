@@ -49,7 +49,7 @@ export default function ChatRoom() {
 
   const handleRoomUsers = ({ room, users }) => {
     console.log("handleRoomUsers: " + isAdmin);
-    if (code && room == roomName) {
+    if (code && room === roomName) {
       console.log("handleJOIN: " + code);
       socket.emit("videoCode", code);
     }
